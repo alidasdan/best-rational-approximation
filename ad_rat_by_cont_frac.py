@@ -31,12 +31,13 @@ def at_exit(msg):
 
 # this function takes in an int limit l and the target fraction to
 # approximate t and returns err, n, d, niter where n/d is the
-# approximate rational for t, err is the absolute error, and niter is
-# the number of iterations of the loop.
+# approximate rational for t, err is the error, and niter is the
+# number of iterations of the loop. note that the err is not the
+# absolute error.
 def find_best_rat(l, t):
     assert l >= 1
 
-    # handle the odd case
+    # handle the trivial case
     if t <= 0:
         return 0, t, 1, 0
 
@@ -70,15 +71,15 @@ def find_best_rat(l, t):
     # first try zero
     n1 = m00
     d1 = m10
-    err1 = abs(t - float(n1) / d1)
+    err1 = (t - float(n1) / d1)
 
     # try the other possibility
     ai = int(float(l - m11) / m10)
     n2 = m00 * ai + m01
     d2 = m10 * ai + m11
-    err2 = abs(t - float(n2) / d2)
+    err2 = (t - float(n2) / d2)
 
-    if err1 <= err2:
+    if abs(err1) <= abs(err2):
         return err1, n1, d1, niter
     else:
         return err2, n2, d2, niter
@@ -86,14 +87,14 @@ def find_best_rat(l, t):
 # this function takes in an error bound err_in, an int limit l, and
 # the target fraction to approximate t and returns err_out, n, d,
 # niter where n/d is the approximate rational for t with d<=l, err_out
-# is the absolute error that is at most err_in, and niter is the
-# number of iterations of the loop. The idea for this function is to
-# find the smallest d such that err_out<=err_in.
+# is the error whose absolute value is at most err_in, and niter is
+# the number of iterations of the loop. The idea for this function is
+# to find the smallest d such that err_out<=err_in.
 def find_best_rat_with_err_bound(err_in, l, t):
     l_curr = 1
     sum_niter = 0
     err_out, n, d, niter = find_best_rat(l_curr, t)
-    while (err_out > err_in) and (l_curr < l):
+    while (abs(err_out) > err_in) and (l_curr < l):
         l_curr *= 10
         sum_niter += niter
         err_out, n, d, niter = find_best_rat(l_curr, t)
@@ -142,7 +143,7 @@ def main():
         err, n, d, niter = find_best_rat(l, t)
     else:
         err, n, d, niter = find_best_rat_with_err_bound(eps, l, t)
-    err = (t - float(n) / d)
+
     if eps == None:
         print("target= %f best_rat= %d / %d max_denom= %d err= %g abs_err= %g niter= %d" % (t, n, d, l, err, abs(err), niter))
     else:

@@ -30,13 +30,20 @@ def at_exit(msg):
 # this function takes in an int limit l and the target fraction to
 # approximate t and returns err, n, d, niter where n/d is the
 # approximate rational for t, err is the absolute error, and niter is
-# the number of iterations of the loop.
+# the number of iterations of the loop. note that the err is not the
+# absolute error.
 def find_best_rat(l, t):
-    assert l >= 1 and t <= 1
+    assert l >= 1
 
-    # handle the odd case
-    if t <= 0:
+    # partition t into its int and fractional part
+    t_frac, t_int = modf(t)
+
+    # handle the trivial case
+    if t_frac <= 0:
         return 0, t, 1, 0
+
+    ### begin the processing for t_frac ###
+    assert 0 < t_frac < 1
 
     # start with the endpoints 0/1 and 1/1.
     nl, dl = 0, 1
@@ -52,8 +59,8 @@ def find_best_rat(l, t):
 
         # find the largest br such that (nl + br * nr) / (dl + br * dr) < x.
         # also find the largest bl such that x < (bl * nl + nr) / (bl * dl + dr).
-        ntmp = nl - t * dl
-        dtmp = t * dr - nr
+        ntmp = nl - t_frac * dl
+        dtmp = t_frac * dr - nr
         br = int(floor(float(ntmp) / dtmp))
         bl = int(floor(float(dtmp) / ntmp))
         side = 0 # left:-1, init:0, right:1
@@ -84,40 +91,46 @@ def find_best_rat(l, t):
         med = float(nm) / dm
 
         # branch based on t's position in nl/dr < med < nr/dr
-        if t == med:
+        if t_frac == med:
             loc = 0
             break
-        elif t < med:
+        elif t_frac < med:
             loc = -1
             nr, dr = nm, dm
-        elif t > med:
+        elif t_frac > med:
             loc = 1
             nl, dl = nm, dm
 
-    if loc == 0:
-        # t = med
-        err = abs(t - float(nm) / dm)
-        return err, nm, dm, niter
-    else:
-        # find out the endpoint closest to t
-        errl = abs(t - float(nl) / dl)
-        errr = abs(t - float(nr) / dr)
+    ### end the processing for t_frac ###
+    
+    if loc == 0: 
+        # t_frac = med
+        n, d = nm, dm
+    else: 
+        # find out the endpoint closest to t_frac
+        errl = abs(t_frac - float(nl) / dl)
+        errr = abs(t_frac - float(nr) / dr)
         if errl <= errr:
-            return errl, nl, dl, niter
+            n, d = nl, dl
         else:
-            return errr, nr, dr, niter
+            n, d = nr, dr
+
+    # convert the solution to a rat for t
+    n += t_int * d
+    err = (t - float(n) / d)
+    return err, n, d, niter
 
 # this function takes in an error bound err_in, an int limit l, and
 # the target fraction to approximate t and returns err_out, n, d,
 # niter where n/d is the approximate rational for t with d<=l, err_out
-# is the absolute error that is at most err_in, and niter is the
-# number of iterations of the loop. The idea for this function is to
-# find the smallest d such that err_out<=err_in.
+# is the error whose absolute value is at most err_in, and niter is
+# the number of iterations of the loop. The idea for this function is
+# to find the smallest d such that err_out<=err_in.
 def find_best_rat_with_err_bound(err_in, l, t):
     l_curr = 1
     sum_niter = 0
     err_out, n, d, niter = find_best_rat(l_curr, t)
-    while (err_out > err_in) and (l_curr < l):
+    while (abs(err_out) > err_in) and (l_curr < l):
         l_curr *= 10
         sum_niter += niter
         err_out, n, d, niter = find_best_rat(l_curr, t)
@@ -162,13 +175,11 @@ def main():
 
     # find the best rational approximation n/d with d<=l and with
     # the min err or the err at most eps.
-    t_frac, t_int = modf(t)
     if eps == None:
-        err, n, d, niter = find_best_rat(l, t_frac)
+        err, n, d, niter = find_best_rat(l, t)
     else:
-        err, n, d, niter = find_best_rat_with_err_bound(eps, l, t_frac)
-    n += t_int * d
-    err = (t - float(n) / d)
+        err, n, d, niter = find_best_rat_with_err_bound(eps, l, t)
+
     if eps == None:
         print("target= %f best_rat= %d / %d max_denom= %d err= %g abs_err= %g niter= %d" % (t, n, d, l, err, abs(err), niter))
     else:

@@ -12,7 +12,7 @@ import sys
 import getopt
 import re
 from math import *
-from ad_rat_by_cont_frac import *
+from ad_rat_by_fast_farey import *
 
 def show_usage():
     print "Usage:  " + sys.argv[0] + " -l/--limit=int>=1 -n/--nums=quoted list of at least 2 numbers or math expression returning float (w/o spaces)"
