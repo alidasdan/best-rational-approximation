@@ -32,7 +32,7 @@ sequence is simple but is definitely not trivial. For example, the
 implementation at one of the top links from a google search on 'best
 rational approximation' does not work correctly in all cases, e.g., it
 fails to find the best rational approximation n/d to pi when d is
-upper-bounded by 100.
+upper-bounded by 100. 
 
 The faster algorithm using the Farey sequence reduces the number of
 iterations drastically (except when running for the golden ratio as
@@ -101,7 +101,10 @@ These programs still run very fast for very large limits.
 
 ## HOW TO TEST
 
-Type 'utest.sh'.
+Type 'utest.sh'. For double-checking the approximations to pi, check
+out http://oeis.org/A063674 and http://oeis.org/A063673 (which
+respectively give the numerators and denominators of the best rational
+approximations to pi).
 
 ## HOW TO COMPUTE GCD AND LCM OF A LIST OF FLOATING-POINT NUMBERS
 
