@@ -29,10 +29,10 @@ implementation by D. Eppstein of Universite of California, Irvine.
 
 I designed the other two algorithms: The algorithm using the Farey
 sequence is simple but is definitely not trivial. For example, the
-implementation in [4] (one of the top results to a google search on
-'best rational approximation' and implemented by John D. Cook) does
-not work correctly in all cases, e.g., it fails to find the best
-rational approximation n/d to pi when d is upper-bounded by 100.
+implementation at one of the top links from a google search on 'best
+rational approximation' does not work correctly in all cases, e.g., it
+fails to find the best rational approximation n/d to pi when d is
+upper-bounded by 100.
 
 The faster algorithm using the Farey sequence reduces the number of
 iterations drastically (except when running for the golden ratio as
@@ -162,7 +162,4 @@ Springer-Verlag, 1987, pp. 665-7.
 
 [3] M. Forisek, Approximating Rational Numbers by Fractions, in Fun
 with Algorithms: LNCS, Springer-Verlag, v. 4475, pp. 156-165, 2007.
-
-[4] URL:http://www.johndcook.com/blog/2010/10/20/best-rational-approximation/.
-
 
