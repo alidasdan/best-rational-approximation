@@ -104,7 +104,11 @@ These programs still run very fast for very large limits.
 Type 'utest.sh'. For double-checking the approximations to pi, check
 out http://oeis.org/A063674 and http://oeis.org/A063673 (which
 respectively give the numerators and denominators of the best rational
-approximations to pi).
+approximations to pi). 
+
+You can check the results by running an exhaustive search using
+'ad_rat_by_exhaustive.py', which runs very slow for limits larger than
+1000.
 
 ## HOW TO COMPUTE GCD AND LCM OF A LIST OF FLOATING-POINT NUMBERS
 
