@@ -97,7 +97,7 @@ target= 1.618034 best_rat= 13 / 8 max_denom= 10 err= -0.00696601 abs_err= 0.0069
 This output states that the best rational approximation to the golden
 ratio is 13/8 with an absolute error close to 1e-2.
 
-These programs still run very fast for very large limits.
+These programs run very fast even for very large limits.
 
 ## HOW TO TEST
 
