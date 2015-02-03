@@ -12,7 +12,7 @@ rational approximation to a target real number t if the absolute
 difference (the absolute error) between n/d and t is the smallest
 among all the fractions each of whose denominator is at most l.
 
-Since this is a well-known problem in mathematics, I will give more
+Since this is a well-known problem in mathematics, I will not give more
 details. The best sources are already available on the Web.
 
 ## ALGORITHMS FOR BEST RATIONAL APPROXIMATION
