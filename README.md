@@ -157,7 +157,7 @@ expected result is that the gcd should be equal to pi and the lcm
 should be equal to 6 times pi. The program correctly outputs these
 expected values.
 
-'utests.sh' tests this program.
+'utests2.sh' tests this program.
 
 ## REFERENCE
 
