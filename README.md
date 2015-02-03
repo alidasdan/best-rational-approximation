@@ -116,10 +116,10 @@ A related problem to the best rational approximation problem is
 computing the greated common divisor (gcd) and least common multiple
 (lcm) of a given list of floating-point numbers (or real numbers). A
 solution to this problem can be given using the best rational
-approximation algorithms. The solution has two main steps: (1) finding
-the best rational approximation to each number in the input list; (2)
-computing the gcd and lcm of the resulting rational numbers. Note that
-the gcd and lcm of rational numbers are well-defined (as in the case
+approximation algorithms. The solution has two main steps: 
+- (1) finding the best rational approximation to each number in the input list; 
+- (2) computing the gcd and lcm of the resulting rational numbers. 
+Note that the gcd and lcm of rational numbers are well-defined (as in the case
 for integers).
 
 The program 'ad_gcd_lcm.py' solves this problem. Without a proof, I
