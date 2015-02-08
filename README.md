@@ -55,7 +55,6 @@ following output shows, where the last line is the final answer with
 intermediate approximations along the way
 
 ```
-> craig.x 3.14159265358979323844 1e-4
 3/1	epsilon = 5.000000e-02
 22/7	epsilon = 4.000000e-04
 355/113	epsilon = 8.491368e-08
