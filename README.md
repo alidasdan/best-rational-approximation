@@ -64,8 +64,8 @@ v=3.14159 n/d=355/113 err=0.0001
 Changing the error calculation to the absolute error or removing the
 error rounding (see the code to understand what I mean by 'error
 rounding') did not change the result. As a result, I have decided not
-to post the implementation of the algorithm in [3] since my 'fast
-Farey algorithm' already produce the correct output.
+to post my implementation of the algorithm in [3] since my 'fast
+Farey algorithm' already produces the correct output.
 
 One caveat to note is that real numbers are represented in computers
 as floating-point numbers. Beyond the binary representation issues,
