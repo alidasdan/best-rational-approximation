@@ -25,21 +25,48 @@ approximation in three different Python programs:
 
 The algorithm in 'ad_rat_by_cont_frac.py' is not difficult to design
 from scratch but my implementation is based closely on an
-implementation by D. Eppstein of Universite of California, Irvine.
+implementation in [6].
 
 I designed the other two algorithms: The algorithm using the Farey
 sequence is simple but is definitely not trivial. For example, the
-implementation at one of the top links from a google search on 'best
-rational approximation' does not work correctly in all cases, e.g., it
-fails to find the best rational approximation n/d to pi when d is
-upper-bounded by 100. 
+implementation at [2], which is one of the top links from a google
+search on 'best rational approximation', does not work correctly in
+all cases, e.g., it fails to find the best rational approximation n/d
+to pi when d is upper-bounded by 100.
 
 The faster algorithm using the Farey sequence reduces the number of
 iterations drastically (except when running for the golden ratio as
 the target) but all algorithms work fast enough for denominator limits
-up to one million and potentially even beyond. Later I will implement
-and post the other faster algorithms using the Farey sequence: Two are
-given in [2] and [3].
+up to one million and potentially even beyond.
+
+I was able to find two other references for a faster algorithm using
+the Farey sequence: [3] and [7]. I have not implemented the algorithm
+in [7] so let us focus on the algorithm in [3]. There are two
+implementations of this algorithm at [4] and [5]. These
+implementations take in two inputs: the number to approximate and a
+relative error threshold. My somewhat limited testing showed that they
+do produce the same output, which is as expected as [5] is a
+reimplementation of [4].
+
+Unfortunately, as in [2], [3-5] miss many of the best rational
+approximations when I ran them for pi. For example, a run of either
+[4] or [5] for pi=3.14159265358979323844 misses 311/99 as the
+following output shows, where the last line is the final answer with
+intermediate approximations along the way
+
+```
+> craig.x 3.14159265358979323844 1e-4
+3/1	epsilon = 5.000000e-02
+22/7	epsilon = 4.000000e-04
+355/113	epsilon = 8.491368e-08
+v=3.14159 n/d=355/113 err=0.0001
+```
+
+Changing the error calculation to the absolute error or removing the
+error rounding (see the code to understand what I mean by 'error
+rounding') did not change the result. As a result, I have decided not
+to post the implementation of the algorithm in [3] since my 'fast
+Farey algorithm' already produce the correct output.
 
 One caveat to note is that real numbers are represented in computers
 as floating-point numbers. Beyond the binary representation issues,
@@ -164,9 +191,23 @@ expected values.
 [1] R.L. Graham, D.E. Knuth, and O. Patashnik, Concrete Mathematics,
 2nd Edition, Addison-Wesley Longman, 1994.
 
-[2] J. Spanier and K.B. Oldham, An Atlas of Functions,
+[2] John D. Cook, Code for Best Rational Approximation, URL:
+"http://www.johndcook.com/blog/2010/10/20/best-rational-approximation/"
+
+[3] J. Spanier and K.B. Oldham, An Atlas of Functions,
 Springer-Verlag, 1987, pp. 665-7.
 
-[3] M. Forisek, Approximating Rational Numbers by Fractions, in Fun
-with Algorithms: LNCS, Springer-Verlag, v. 4475, pp. 156-165, 2007.
+[4] R. J. Craig, Code for Best Rational Approximation, "URL:
+http://www.netlib.org/c/frac". Implements the algorithm proposed in
+[3] (with lots of GOTOs).
 
+[5] Raevnos, Code for Best Rational Approximation, URL:
+"http://pennmush.sourcearchive.com/documentation/1.8.2p8/funmath_8c_6d20fe500d5000139804cfb8e6377087.html". Converts
+the code in [4] in a structured manner without GOTOs.
+
+[6] D. Eppstein, Code for Best Rational Approximation,
+URL="https://www.ics.uci.edu/~eppstein/numth/frap.c". Implements the
+solution using continued fractions.
+
+[7] M. Forisek, Approximating Rational Numbers by Fractions, in Fun
+with Algorithms: LNCS, Springer-Verlag, v. 4475, pp. 156-165, 2007.
