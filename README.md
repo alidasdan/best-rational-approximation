@@ -111,7 +111,7 @@ algorithm contains). The absolute error is close to 1e-3.
 
 A potentially interesting part of these programs is that these
 programs can also accept a math expression that returns a float. The
-expression must be enclosed in single or double quores. For example,
+expression must be enclosed in single or double quotes. For example,
 here is how to find the best rational approximation to the golden
 ratio:
 
@@ -139,7 +139,7 @@ You can check the results by running an exhaustive search using
 ## HOW TO COMPUTE GCD AND LCM OF A LIST OF FLOATING-POINT NUMBERS
 
 A related problem to the best rational approximation problem is
-computing the greated common divisor (gcd) and least common multiple
+computing the greatest common divisor (gcd) and least common multiple
 (lcm) of a given list of floating-point numbers (or real numbers). A
 solution to this problem can be given using the best rational
 approximation algorithms. The solution has two main steps: 
