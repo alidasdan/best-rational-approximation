@@ -83,7 +83,7 @@ def main():
     nums = None
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'l:n:', ['limit=', '--nums'])
+        opts, args = getopt.getopt(sys.argv[1:], 'l:n:', ['limit=', 'nums'])
     except getopt.GetoptError, msg:
         at_exit(msg)
 
