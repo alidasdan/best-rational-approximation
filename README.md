@@ -205,7 +205,7 @@ G = (sqrt(5) + 1) / 2 and C = (sqrt(5) - 1) / 2 (or C = 1 / G = G - 1).
 ```
 
 Suppose F1, F2, and F3 are three consecutive Fibonnacci numbers such that F2 is less than
-or equal to L. Then, the observation (probably very well known) is that the best rational 
+or equal to L. Then, the observation (well known [8]) is that the best rational 
 approximation to G whose denominator is at most L is equal to F3 / F2 and the one for C
 is equal to F1 / F2. For example,
 
@@ -227,17 +227,17 @@ because the Fibonacci sequence can be computed easily.
 [1] R.L. Graham, D.E. Knuth, and O. Patashnik, Concrete Mathematics,
 2nd Edition, Addison-Wesley Longman, 1994.
 
-[2] John D. Cook, Code for Best Rational Approximation, URL:
+[2] John D. Cook, Code for Best Rational Approximation, URL=
 "http://www.johndcook.com/blog/2010/10/20/best-rational-approximation/"
 
 [3] J. Spanier and K.B. Oldham, An Atlas of Functions,
 Springer-Verlag, 1987, pp. 665-7.
 
-[4] R. J. Craig, Code for Best Rational Approximation, "URL:
-http://www.netlib.org/c/frac". Implements the algorithm proposed in
+[4] R. J. Craig, Code for Best Rational Approximation, URL=
+"http://www.netlib.org/c/frac". Implements the algorithm proposed in
 [3] (with lots of GOTOs).
 
-[5] Raevnos, Code for Best Rational Approximation, URL:
+[5] Raevnos, Code for Best Rational Approximation, URL=
 "http://pennmush.sourcearchive.com/documentation/1.8.2p8/funmath_8c_6d20fe500d5000139804cfb8e6377087.html". Converts
 the code in [4] in a structured manner without GOTOs.
 
@@ -247,3 +247,6 @@ solution using continued fractions.
 
 [7] M. Forisek, Approximating Rational Numbers by Fractions, in Fun
 with Algorithms: LNCS, Springer-Verlag, v. 4475, pp. 156-165, 2007.
+
+[8] E. W. Weisstein, Golden Ratio, From MathWorld--A Wolfram Web Resource. 
+URL="http://mathworld.wolfram.com/GoldenRatio.html".
