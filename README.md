@@ -190,7 +190,7 @@ expected values.
 Using the Fibonacci sequence, it is trivial to come up with the best rational
 approximations to the golden ratio and its conjugate.
 
-Recall that the Fibonacci sequence
+Recall that the Fibonacci sequence goes
 
 ```
 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
