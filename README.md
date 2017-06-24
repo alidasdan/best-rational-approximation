@@ -185,6 +185,43 @@ expected values.
 
 'utests2.sh' tests this program.
 
+## BEST RATIONAL APPROXIMATION FOR GOLDEN RATIO AND ITS CONJUGATE
+
+Using the Fibonacci sequence, it is trivial to come up with the best rational
+approximations to the golden ratio and its conjugate.
+
+Recall that the Fibonacci sequence
+
+```
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+```
+
+where every number (except the first two) is a sum of the previous two numbers
+in the sequence. Also recall that the golden ratio (G) and its conjugate (C) are
+defined as 
+
+```
+G = (sqrt(5) + 1) / 2 and C = (sqrt(5) - 1) / 2 (or C = 1 / G = G - 1).
+```
+
+Suppose F1, F2, and F3 are three consecutive Fibonnacci numbers such that F2 is less than
+or equal to L. Then, the observation (probably very well known) is that the best rational 
+approximation to G whose denominator is at most L is equal to F3 / F2 and the one for C
+is equal to F1 / F2. For example,
+
+```
+L | G | C
+--- | --- | ---
+2 | 3 / 2 | 1/ 2
+5 | 8 / 5 | 3 / 5
+10 | 13 / 8 | 5 / 8
+20 | 21 / 13 | 8 / 13
+30 | 34 / 21 | 13 / 21
+40 | 55 / 34 | 21 / 34
+```
+
+If you run the code in this repo, the results will be as shown in this table.
+
 ## REFERENCE
 
 [1] R.L. Graham, D.E. Knuth, and O. Patashnik, Concrete Mathematics,
