@@ -209,7 +209,6 @@ or equal to L. Then, the observation (probably very well known) is that the best
 approximation to G whose denominator is at most L is equal to F3 / F2 and the one for C
 is equal to F1 / F2. For example,
 
-```
 L | G | C
 --- | --- | ---
 2 | 3 / 2 | 1/ 2
@@ -218,7 +217,6 @@ L | G | C
 20 | 21 / 13 | 8 / 13
 30 | 34 / 21 | 13 / 21
 40 | 55 / 34 | 21 / 34
-```
 
 If you run the code in this repo, the results will be as shown in this table.
 
