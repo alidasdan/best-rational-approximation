@@ -218,7 +218,9 @@ L | G | C
 30 | 34 / 21 | 13 / 21
 40 | 55 / 34 | 21 / 34
 
-If you run the code in this repo, the results will be as shown in this table.
+If you run the programs in this repo, the results will be as shown in this table.
+Note that this observation also provides an easy way to test the results of such programs 
+because the Fibonacci sequence can be computed easily.
 
 ## REFERENCE
 
