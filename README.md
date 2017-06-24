@@ -185,7 +185,7 @@ expected values.
 
 'utests2.sh' tests this program.
 
-## BEST RATIONAL APPROXIMATION FOR GOLDEN RATIO AND ITS CONJUGATE
+## BEST RATIONAL APPROXIMATIONS FOR THE GOLDEN RATIO AND ITS CONJUGATE
 
 Using the Fibonacci sequence, it is trivial to come up with the best rational
 approximations to the golden ratio and its conjugate.
